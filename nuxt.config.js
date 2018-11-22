@@ -15,7 +15,10 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      { src: '/js/response.js' }
+    ],
   },
 
   /*
@@ -66,7 +69,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    vendor: ['axios'],
+    vendor: ['axios', 'element-ui'],
     babel: {        //配置按需引入规则
       "plugins":[
           [
