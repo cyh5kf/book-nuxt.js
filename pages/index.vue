@@ -28,10 +28,8 @@
         <div class="swiper-slide">Slide 4</div>
         <div class="swiper-slide">Slide 5</div>
       </div>
-      <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
     </div>
-
 
     <!-- 分类 -->
     <div class="sort">
@@ -48,11 +46,15 @@
         <p>完本</p>
       </div>
     </div>
+
+    
+
   </section>
 </template>
 
 <script>
 import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
 
 export default {
   mounted () {
@@ -75,7 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "../assets/css/swiper.min.css";
   header {
     padding: 0.34rem 0.32rem 0.32rem;
     overflow: hidden;
@@ -144,53 +145,33 @@ export default {
   }
 
   .swiper-container {
-      width: 100%;
-      height: 3rem;
-      .swiper-slide {
-        text-align: center;
-        font-size: 0.18rem;
-        background: #fff;
-
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
-    }
-    
-  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
-      bottom: 0.9rem;
+    width: 100%;
+    height: 3rem;
   }
 
   .sort {
     padding: 0.36rem 0.7rem 0.42rem;
+    overflow: hidden;
 
     .sub {
-      overflow: hidden;
+      img {
+        margin-bottom: 0.12rem;
+      }
+      
       &:first-child {
         float: left;
+        width: 0.82rem;
+        height: 0.8rem;
       }
 
       &:last-child {
         float: right;
-      }
-
-      .center {
-        margin: 0 auto;
-      }
-
-      .icon {
         width: 0.76rem;
-        height: 0.76rem;
+        height: 0.7rem;
+
+        img {
+          padding: 0.04rem 0 0.06rem;
+        }
       }
 
       p {
@@ -198,6 +179,18 @@ export default {
         color: #333;
       }
 
+    }
+
+    .center {
+      margin-left: 1.88rem;
+      float: left;
+      width: 0.76rem;
+      height: 0.76rem;
+
+      img {
+        padding-top: 0.04rem;
+      }
+      
     }
   }
 
