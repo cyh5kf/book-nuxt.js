@@ -22,11 +22,21 @@
     <!-- 轮播图 -->
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">
+          <img src="~assets/images/banner.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="~assets/images/banner.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="~assets/images/banner.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="~assets/images/banner.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="~assets/images/banner.png" alt="">
+        </div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -41,39 +51,61 @@
         <img src="~assets/images/sort_icon.png" alt="" class="icon">
         <p>分类</p>
       </div>
-      <div class="sub">
+      <div class="sub wanben">
         <img src="~assets/images/book_icon.png" alt="" class="icon">
         <p>完本</p>
       </div>
+      <div class="clear"></div>
     </div>
 
-    
+    <BookList titleName="本周热推" />
+    <BookList titleName="新书抢先" />
+
+    <div class="recommend">
+      <p class="title">书友推荐</p>
+      <ul class="content">
+        <li class="bookItem" v-for="(item, index) in recommendList" :key="index">
+          <img src="~assets/images/cover.png" alt="">
+          <p class="name">无敌小皇叔</p>
+          <p class="author">唐家三少</p>
+        </li>
+      </ul>
+    </div>
+
+    <BookList titleName="完本推荐" />
 
   </section>
 </template>
 
 <script>
-import Swiper from 'swiper';
-import 'swiper/dist/css/swiper.min.css';
+  import Swiper from 'swiper';
+  import 'swiper/dist/css/swiper.min.css';
+  import BookList from '~/components/BookList';
 
-export default {
-  mounted () {
-    var swiper = new Swiper('.swiper-container', {
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
-    // const swiper = new Swiper('.swiper-container',{
-    //     autoplayDisableOnInteraction: false,
-    //     autoplay: 3000,
-    //     loop: true,
-    //     pagination: '.swiper-pagination',
-    //     paginationClickable :true,
-    // })
-  },
-  components: {
+  export default {
+    data() {
+      return {
+        recommendList: [1,1,1,1,1,1]
+      }
+    },
+    mounted () {
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      });
+      // const swiper = new Swiper('.swiper-container',{
+      //     autoplayDisableOnInteraction: false,
+      //     autoplay: 3000,
+      //     loop: true,
+      //     pagination: '.swiper-pagination',
+      //     paginationClickable :true,
+      // })
+    },
+    components: {
+      BookList
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -151,7 +183,6 @@ export default {
 
   .sort {
     padding: 0.36rem 0.7rem 0.42rem;
-    overflow: hidden;
 
     .sub {
       img {
@@ -161,17 +192,6 @@ export default {
       &:first-child {
         float: left;
         width: 0.82rem;
-        height: 0.8rem;
-      }
-
-      &:last-child {
-        float: right;
-        width: 0.76rem;
-        height: 0.7rem;
-
-        img {
-          padding: 0.04rem 0 0.06rem;
-        }
       }
 
       p {
@@ -181,16 +201,62 @@ export default {
 
     }
 
+    .wanben {
+      float: right;
+      width: 0.76rem;
+
+      img {
+        padding: 0.04rem 0 0.06rem;
+      }
+    }
+
     .center {
       margin-left: 1.88rem;
       float: left;
       width: 0.76rem;
-      height: 0.76rem;
 
       img {
         padding-top: 0.04rem;
       }
       
+    }
+  }
+
+  .recommend {
+    padding: 0 0.3rem 0.46rem;
+
+    .title {
+      font-size: 0.36rem;
+      color: #333;
+      padding-bottom: 0.24rem;
+    }
+
+    .content {
+      width: 6.9rem;
+      overflow: hidden;
+
+      .bookItem {
+        margin-right: 1.02rem;
+        float: left;
+        
+        img {
+          display: block;
+          width: 1.6rem;
+          height: 1.92rem;
+          box-shadow:0px 4px 8px 0px rgba(0,0,0,0.08);
+        }
+
+        .name {
+          font-size: 0.3rem;
+          color: #333;
+          font-weight: 600;
+        }
+
+        .author {
+          font-size: 0.28rem;
+          color: #666;
+        }
+      }
     }
   }
 
