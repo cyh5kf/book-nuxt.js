@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="booklist_wrap">
     <div class="title">
       <span class="name">{{titleName}}</span>
-      <span class="more">更多</span>
-      <img src="~assets/images/right_arrow.png" alt="">
+      <span class="more" v-if="isMore === true">更多</span>
+      <img src="~assets/images/right_arrow.svg" alt="">
     </div>
     <BookCard v-for="(item, index) in bookList" :key="index" />
   </div>
@@ -13,13 +13,14 @@
   import BookCard from '~/components/BookCard';
 
   export default {
-    props: ['titleName'],
+    props: ['titleName', 'isMore'],
     data() {
       return {
         bookList: [1,1,1]
       }
     },
     mounted () {
+      console.log(this.isMore)
 
     },
     components: {
@@ -29,8 +30,8 @@
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    padding: 0 0.3rem 0.46rem;
+  .booklist_wrap {
+    padding: 0 0.3rem 0;
 
     .title {
       position: relative;

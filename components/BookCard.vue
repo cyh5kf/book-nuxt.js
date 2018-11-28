@@ -16,6 +16,10 @@
     position: relative;
     margin-bottom: 0.32rem;
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     img {
       width: 1.6rem;
       height: 1.92rem;

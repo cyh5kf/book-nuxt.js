@@ -44,22 +44,28 @@
     <!-- 分类 -->
     <div class="sort">
       <div class="sub">
-        <img src="~assets/images/rank_icon.png" alt="" class="icon">
+        <img src="~assets/images/rank_icon.svg" alt="" class="icon">
         <p>排行</p>
       </div>
       <div class="sub center">
-        <img src="~assets/images/sort_icon.png" alt="" class="icon">
+        <img src="~assets/images/sort_icon.svg" alt="" class="icon">
         <p>分类</p>
       </div>
       <div class="sub wanben">
-        <img src="~assets/images/book_icon.png" alt="" class="icon">
+        <img src="~assets/images/book_icon.svg" alt="" class="icon">
         <p>完本</p>
       </div>
       <div class="clear"></div>
     </div>
 
-    <BookList titleName="本周热推" />
-    <BookList titleName="新书抢先" />
+    <div class="book_list_wrap">
+      <BookList titleName="本周热推" />
+    </div>
+    
+    <div class="book_list_wrap">
+      <BookList titleName="新书抢先" />
+    </div>
+    
 
     <div class="recommend">
       <p class="title">书友推荐</p>
@@ -72,7 +78,13 @@
       </ul>
     </div>
 
-    <BookList titleName="完本推荐" />
+    <div class="book_list_wrap">
+      <BookList titleName="完本推荐" />
+    </div>
+
+    <div class="btn_bookshelf">
+      <p>进入书架</p>
+    </div>
 
   </section>
 </template>
@@ -109,6 +121,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .container {
+  }
+
   header {
     padding: 0.34rem 0.32rem 0.32rem;
     overflow: hidden;
@@ -166,7 +181,7 @@
     }
 
     .search_btn {
-      background: url('~assets/images/search_btn.png') no-repeat;
+      background: url('~assets/images/search_btn.svg') no-repeat;
       background-size: cover;
       width: 0.44rem;
       height: 0.44rem;
@@ -185,6 +200,8 @@
     padding: 0.36rem 0.7rem 0.42rem;
 
     .sub {
+      text-align: center;
+
       img {
         margin-bottom: 0.12rem;
       }
@@ -223,7 +240,7 @@
   }
 
   .recommend {
-    padding: 0 0.3rem 0.46rem;
+    padding: 0 0.3rem 0.12rem;
 
     .title {
       font-size: 0.36rem;
@@ -237,7 +254,12 @@
 
       .bookItem {
         margin-right: 1.02rem;
+        margin-bottom: 0.32rem;
         float: left;
+
+        &:nth-child(3n+0) {
+          margin-right: 0;
+        }
         
         img {
           display: block;
@@ -257,6 +279,28 @@
           color: #666;
         }
       }
+    }
+  }
+
+  .book_list_wrap {
+    padding-bottom: 0.46rem;
+  }
+  
+  .btn_bookshelf {
+    background: url('~assets/images/btn_bookshelf.svg') no-repeat;
+    background-size: cover;
+    width: 1.6rem;
+    height: 1.6rem;
+    position: fixed;
+    top: 7.98rem;
+    right: 0.3rem;
+
+    p {
+      width: 0.72rem;
+      margin: 0.32rem auto 0;
+      font-size: 0.36rem;
+      color: #fff;
+      line-height: 0.48rem;
     }
   }
 
