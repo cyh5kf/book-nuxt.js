@@ -43,27 +43,28 @@
 
     <!-- 分类 -->
     <div class="sort">
-      <div class="sub">
+      <nuxt-link to="/rankList" class="sub">
         <img src="~assets/images/rank_icon.svg" alt="" class="icon">
         <p>排行</p>
-      </div>
-      <div class="sub center">
+      </nuxt-link>
+      <nuxt-link to="/sort" class="sub center">
         <img src="~assets/images/sort_icon.svg" alt="" class="icon">
         <p>分类</p>
-      </div>
-      <div class="sub wanben">
+      </nuxt-link>
+      <nuxt-link to="/finishList" class="sub wanben">
         <img src="~assets/images/book_icon.svg" alt="" class="icon">
         <p>完本</p>
-      </div>
+      </nuxt-link>
+      
       <div class="clear"></div>
     </div>
 
     <div class="book_list_wrap">
-      <BookList titleName="本周热推" />
+      <BookList titleName="本周热推" goUrl="/hotList" />
     </div>
     
     <div class="book_list_wrap">
-      <BookList titleName="新书抢先" />
+      <BookList titleName="新书抢先" goUrl="/newList" />
     </div>
     
 
@@ -79,7 +80,7 @@
     </div>
 
     <div class="book_list_wrap">
-      <BookList titleName="完本推荐" />
+      <BookList titleName="完本推荐" goUrl="/finishList" />
     </div>
 
     <div class="btn_bookshelf">
@@ -283,7 +284,7 @@
   }
 
   .book_list_wrap {
-    padding-bottom: 0.46rem;
+    padding-bottom: 0.48rem;
   }
   
   .btn_bookshelf {
@@ -296,7 +297,7 @@
     right: 0.3rem;
 
     p {
-      width: 0.72rem;
+      width: 0.76rem;
       margin: 0.32rem auto 0;
       font-size: 0.36rem;
       color: #fff;

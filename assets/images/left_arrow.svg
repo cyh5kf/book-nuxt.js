@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="18px" viewBox="0 0 10 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.1 (67048) - http://www.bohemiancoding.com/sketch -->
+    <title>Pin Left</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="排行榜" transform="translate(-17.000000, -20.000000)" fill="#333333" fill-rule="nonzero">
+            <g id="分组-6" transform="translate(2.000000, 9.000000)">
+                <g id="后退箭头" transform="translate(15.000000, 11.000000)">
+                    <g id="Pin-Left">
+                        <path d="M2.01776695,9.25 L8.63388348,2.63388348 C9.12203884,2.14572811 10.1220388,1.35427189 9.63388348,0.866116524 C9.14572811,0.377961159 8.35427189,0.377961159 7.86611652,0.866116524 L0.366116524,8.36611652 C-0.122038841,8.85427189 -0.122038841,9.64572811 0.366116524,10.1338835 L7.86611652,17.6338835 C8.35427189,18.1220388 9.14572811,18.1220388 9.63388348,17.6338835 C10.1220388,17.1457281 10.1220388,17.3542719 9.63388348,16.8661165 L2.01776695,9.25 Z" id="Path"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
