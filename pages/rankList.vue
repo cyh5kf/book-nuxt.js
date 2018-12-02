@@ -11,30 +11,14 @@
             <img src="~assets/images/right_arrow.svg" alt="">
           </nuxt-link>
         </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">1.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
+        <div class="card" v-for="(item, index) in rankList" :key="index" >
+          <img :src="item.coverUrl" alt="">
+          <div class="detail">
+            <p class="name" v-text="item.name"></p>
+            <p class="subtitle" v-text="item.subtitle"></p>
+            <p class="introduction" v-text="item.introduction"></p>
           </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">2.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">3.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
-          </div>
+        </div>
       </div>
 
       <div class="booklist_wrap">
@@ -45,30 +29,14 @@
           </nuxt-link>
           
         </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">1.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
+        <div class="card" v-for="(item, index) in rankList" :key="index" >
+          <img :src="item.coverUrl" alt="">
+          <div class="detail">
+            <p class="name" v-text="item.name"></p>
+            <p class="subtitle" v-text="item.subtitle"></p>
+            <p class="introduction" v-text="item.introduction"></p>
           </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">2.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">3.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
-          </div>
+        </div>
       </div>
 
       <div class="booklist_wrap">
@@ -79,30 +47,14 @@
           </nuxt-link>
           
         </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">1.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
+        <div class="card" v-for="(item, index) in rankList" :key="index" >
+          <img :src="item.coverUrl" alt="">
+          <div class="detail">
+            <p class="name" v-text="item.name"></p>
+            <p class="subtitle" v-text="item.subtitle"></p>
+            <p class="introduction" v-text="item.introduction"></p>
           </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">2.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="~assets/images/cover.png" alt="">
-            <div class="detail">
-              <p class="name">3.全民领主</p>
-              <p class="subtitle">作者：唐家三少</p>
-              <p class="introduction">简介这本书讲述的就是他们之间...</p>
-            </div>
-          </div>
+        </div>
       </div>
     </div>
 
@@ -116,7 +68,26 @@
   export default {
     data() {
       return {
-        rankList: [1,1,1,1,1,1]
+        rankList: [
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          }
+        ]
       }
     },
     components: {

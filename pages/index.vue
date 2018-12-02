@@ -16,7 +16,7 @@
           <span></span>
         </div>
       </div>
-      <div class="search_btn"></div>
+      <nuxt-link to="/search" class="search_btn"></nuxt-link>
     </header>
 
     <!-- 轮播图 -->
@@ -60,11 +60,11 @@
     </div>
 
     <div class="book_list_wrap">
-      <BookList titleName="本周热推" goUrl="/hotList" />
+      <BookList :dataList="bookList" titleName="本周热推" goUrl="/hotList" />
     </div>
     
     <div class="book_list_wrap">
-      <BookList titleName="新书抢先" goUrl="/newList" />
+      <BookList :dataList="bookList" titleName="新书抢先" goUrl="/newList" />
     </div>
     
 
@@ -72,7 +72,7 @@
       <p class="title">书友推荐</p>
       <ul class="content">
         <li class="bookItem" v-for="(item, index) in recommendList" :key="index">
-          <img src="~assets/images/cover.png" alt="">
+          <img src="http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg" alt="">
           <p class="name">无敌小皇叔</p>
           <p class="author">唐家三少</p>
         </li>
@@ -80,12 +80,18 @@
     </div>
 
     <div class="book_list_wrap">
-      <BookList titleName="完本推荐" goUrl="/finishList" />
+      <BookList :dataList="bookList" titleName="完本推荐" goUrl="/finishList" />
     </div>
 
-    <div class="btn_bookshelf">
-      <p>进入书架</p>
+    <div class="ad">
+      <img src="~assets/images/ad.png" alt="">
+      <span>屠龙宝刀，点击就送</span>
+      <div class="btn_download">立即下载</div>
     </div>
+
+    <nuxt-link to="/bookshelf" class="btn_bookshelf">
+      <p>进入书架</p>
+    </nuxt-link>
 
   </section>
 </template>
@@ -98,7 +104,27 @@
   export default {
     data() {
       return {
-        recommendList: [1,1,1,1,1,1]
+        recommendList: [1,1,1,1,1,1],
+        bookList: [
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          }
+        ]
       }
     },
     mounted () {
@@ -184,6 +210,7 @@
     .search_btn {
       background: url('~assets/images/search_btn.svg') no-repeat;
       background-size: cover;
+      display: block;
       width: 0.44rem;
       height: 0.44rem;
       position: absolute;
@@ -195,6 +222,7 @@
   .swiper-container {
     width: 100%;
     height: 3rem;
+    overflow: hidden;
   }
 
   .sort {
@@ -302,6 +330,41 @@
       font-size: 0.36rem;
       color: #fff;
       line-height: 0.48rem;
+    }
+  }
+
+  .ad {
+    width: 100%;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    padding-left: 1.2rem;
+    font-size: 0.28rem;
+    box-shadow:0px 0px 10px 0px rgba(51,51,51,0.24);
+    position: relative;
+
+    span {
+      color: #333;
+    }
+
+    img {
+      width: 0.72rem;
+      height: 0.82rem;
+      border-radius: 4px;
+      position: absolute;
+      top: 0.24rem;
+      left: 0.24rem;
+    }
+    
+    .btn_download {
+      width: 1.48rem;
+      height: 0.58rem;
+      line-height: 0.58rem;
+      text-align: center;
+      background-color: #EA5454;
+      color: #fff;
+      position: absolute;
+      top: 0.38rem;
+      right: 0.34rem;
     }
   }
 

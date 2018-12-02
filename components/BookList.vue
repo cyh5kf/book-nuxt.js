@@ -8,7 +8,7 @@
       </nuxt-link>
       
     </div>
-    <BookCard v-for="(item, index) in bookList" :key="index" />
+    <BookCard v-for="(item, index) in dataList" :data="item" :key="index" />
   </div>
 </template>
 
@@ -16,10 +16,9 @@
   import BookCard from '~/components/BookCard';
 
   export default {
-    props: ['titleName', 'goUrl'],
+    props: ['titleName', 'goUrl', 'dataList'],
     data() {
       return {
-        bookList: [1,1,1]
       }
     },
     mounted () {

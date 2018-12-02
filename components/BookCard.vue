@@ -1,13 +1,51 @@
 <template>
   <div class="card">
-    <img src="~assets/images/cover.png" alt="">
+    <img :src="data.coverUrl" alt="">
     <div class="detail">
-      <p class="name">全民领主</p>
-      <p class="subtitle">唐家三少·都市·连载·37万字</p>
-      <p class="introduction">这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...</p>
+      <p class="name" v-html="name"></p>
+      <p class="subtitle" v-html="subtitle"></p>
+      <p class="introduction" v-html="introduction"></p>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['data', 'searchResult'],
+  computed: {
+    name() {
+      const searchResult = this.searchResult;
+      return this.replaceString(searchResult, this.data.name);
+    },
+    subtitle() {
+      const searchResult = this.searchResult;
+      return this.replaceString(searchResult, this.data.subtitle);
+    },
+    introduction() {
+      const searchResult = this.searchResult;
+      return this.replaceString(searchResult, this.data.introduction);
+    }
+  },
+  methods: {
+    replaceString(searchResult, resultText) {
+      let titleString = resultText;
+      if(!titleString) {
+        return '';
+      }
+      if(searchResult && searchResult.length > 0) {
+        // 匹配关键字正则
+        let replaceReg = new RegExp(searchResult, 'g');
+        // 高亮替换v-html值
+        let replaceString = '<span style="color: #EA5454;">' + searchResult + '</span>';
+        // 开始替换
+        titleString = titleString.replace(replaceReg, replaceString);
+      }
+      return titleString;
+    }
+  },
+}
+</script>
+
 
 <style lang="scss" scoped>
   .card {
