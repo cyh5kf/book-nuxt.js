@@ -10,8 +10,8 @@
         <li v-for="(itme,index) in tabList" :key="index" :class="tabIndex===index? 'active': ''"  @click="getItem(index)" v-text="itme"></li>
       </ul>
       
-      <div class="edit_btn" v-show="tabIndex === 0" @click="handleEdit">编辑</div>
-      <div class="edit_btn" v-show="tabIndex === 1" @click="clearHistory">清空</div>
+      <div class="edit_btn" v-show="tabIndex === 0 && bookshelfList.length > 0" @click="handleEdit">编辑</div>
+      <div class="edit_btn" v-show="tabIndex === 1 && historyList.length > 0" @click="clearHistory">清空</div>
     </div>
 
     <div class="header_edit" v-show="isEdit">
@@ -19,7 +19,7 @@
       <span class="cancel" @click="handleCancel">取消</span>
     </div>
 
-    <div class="content" v-show="tabIndex === 0">
+    <div class="content" v-show="tabIndex === 0 && bookshelfList.length > 0">
       <div v-for="(item, index) in bookshelfList" :key="index" class="card">
         <div class="img_wrap">
           <img :src="item.coverUrl" alt="">
@@ -37,7 +37,9 @@
       </div>
     </div>
 
-    <div class="content" v-show="tabIndex === 1">
+    <NoResult text="暂无书籍喔，快去首页添加几本吧～" v-show="tabIndex === 0 && bookshelfList.length === 0" />
+
+    <div class="content" v-show="tabIndex === 1 && historyList.length > 0">
       <div v-for="(item, index) in historyList" :key="index" class="card">
         <div class="img_wrap">
           <img :src="item.coverUrl" alt="">
@@ -51,8 +53,10 @@
       </div>
     </div>
 
+    <NoResult text="暂无历史记录～" v-show="tabIndex === 1 && historyList.length === 0" />
+
     <div class="delete" @click="handleDelete" v-show="isEdit">
-      <img src="~assets/images/delete_btn.png" alt="">
+      <img src="~assets/images/delete_btn.svg" alt="">
       <span>删除 </span>
       <span v-text="`(${checkNum})`"></span>
     </div>
@@ -62,6 +66,7 @@
 
 <script>
   import BookCard from '~/components/BookCard';
+  import NoResult from '~/components/NoResult';
 
   export default {
     data() {
@@ -149,6 +154,11 @@
       // 书架编辑，取消
       handleCancel() {
         this.isEdit = false; 
+        this.isCheckedAll = false;
+        let bookshelfList = this.bookshelfList;
+        bookshelfList.forEach((i, index) => {
+          this.$set(i, 'isChecked', false);
+        });
       },
       // 删除书架操作
       handleDelete() {
@@ -159,10 +169,14 @@
         this.bookshelfList = bookshelfList.filter((i) => {
           return !i.isChecked === true;
         })
+        if(this.bookshelfList.length === 0) {
+          this.handleCancel();
+        }
       }
     },
     components: {
-      BookCard
+      BookCard,
+      NoResult
     }
   }
 </script>

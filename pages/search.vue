@@ -38,9 +38,11 @@
       </ul>
     </div>
 
-    <div class="search_result" v-show="isInput">
+    <div class="search_result" v-show="isInput && bookList.length > 0">
       <BookCard v-for="(item, index) in bookList" :searchResult="searchResult" :data="item" :key="index"  />
     </div>
+
+    <NoResult text="暂无搜索结果～" v-show="isInput && bookList.length === 0" />
     
   </section>
 </template>
@@ -48,29 +50,12 @@
 <script>
   import BookCard from '~/components/BookCard';
   import HeaderNav from '~/components/HeaderNav';
+  import NoResult from '~/components/NoResult';
 
   export default {
     data() {
       return {
         bookList: [
-          {
-            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
-            name: '全民领主',
-            subtitle: '唐家三少·都市·连载·37万字',
-            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
-          },
-          {
-            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
-            name: '全民领主',
-            subtitle: '唐家三少·都市·连载·37万字',
-            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
-          },
-          {
-            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
-            name: '全民领主',
-            subtitle: '唐家三少·都市·连载·37万字',
-            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
-          }
         ],
         isInput: false, // 是否处于输入状态
         searchValue: '', // 实时搜索内容
@@ -93,7 +78,8 @@
     },
     components: {
       BookCard,
-      HeaderNav
+      HeaderNav,
+      NoResult
     }
   }
 </script>
