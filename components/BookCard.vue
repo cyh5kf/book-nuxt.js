@@ -1,12 +1,12 @@
 <template>
-  <div class="card">
+  <nuxt-link to="/bookIntroduction" class="card">
     <img :src="data.coverUrl" alt="">
     <div class="detail">
       <p class="name" v-html="name"></p>
       <p class="subtitle" v-html="subtitle"></p>
       <p class="introduction" v-html="introduction"></p>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -49,6 +49,7 @@ export default {
 
 <style lang="scss" scoped>
   .card {
+    display: block;
     width: 100%;
     height: 1.92rem;
     position: relative;

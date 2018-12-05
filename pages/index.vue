@@ -148,8 +148,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .container {
-  }
 
   header {
     padding: 0.34rem 0.32rem 0.32rem;

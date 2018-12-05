@@ -1,4 +1,5 @@
 const pkg = require('./package')
+var TransformModulesPlugin = require('webpack-transform-modules-plugin')
 
 module.exports = {
   mode: 'universal',
@@ -30,7 +31,6 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css',
     '@/assets/css/main.css',
   ],
 
@@ -38,7 +38,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    { src: '@/plugins/cube-ui', ssr: false }
   ],
 
   /*
@@ -70,6 +70,15 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+   analyze: true,
+   resolve: {
+      alias: {
+        'cube-ui': 'cube-ui/lib'
+      }
+    },
+    plugins: [
+      new TransformModulesPlugin()
+    ],
     babel: {        //配置按需引入规则
       "plugins":[
           [

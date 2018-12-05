@@ -38,7 +38,6 @@
     background-size: contain;
     position: relative;
     text-align: center;
-    background-color: #fff;
     padding-bottom: 0.28rem;
 
     .back_btn {

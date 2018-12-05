@@ -19,6 +19,9 @@ $ npm run pm2Build
 
 # generate static project  静态应用部署
 $ npm run generate
+
+# 分析并可视化构建后的打包文件, 分析结果可在 http://localhost:8888 上查看
+$ npm run analyze
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
