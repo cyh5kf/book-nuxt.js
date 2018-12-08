@@ -7,11 +7,11 @@
         <p class="bottom">novel west</p>
       </div>
       <div class="tab_list">
-        <div class="gender active">
+        <div :class="{gender: true, active: gender === 'boy'}" @click="changeGender('boy')">
           男生
           <span></span>
         </div>
-        <div class="gender">
+        <div :class="{gender: true, active: gender === 'girl'}" @click="changeGender('girl')">
           女生
           <span></span>
         </div>
@@ -104,6 +104,7 @@
   export default {
     data() {
       return {
+        gender: 'boy', // 性别
         recommendList: [1,1,1,1,1,1],
         bookList: [
           {
@@ -124,7 +125,47 @@
             subtitle: '唐家三少·都市·连载·37万字',
             introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
           }
-        ]
+        ],
+        boyBookList: [
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          }
+        ],
+        girlBookList: [
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          },
+          {
+            coverUrl: 'http://static.zongheng.com/upload/cover/28/32/2832b8950fbd2a91b4359a0abdbbcb6f.jpeg',
+            name: '全民领主',
+            subtitle: '唐家三少·都市·连载·37万字',
+            introduction: '这本书讲述的就是他们之间那些温暖他们之间那些温暖他们之间那些温暖...'
+          }
+        ],
       }
     },
     mounted () {
@@ -140,6 +181,13 @@
       //     pagination: '.swiper-pagination',
       //     paginationClickable :true,
       // })
+    },
+    methods: {
+      // 切换性别列表
+      changeGender(gender) {
+        this.gender = gender;
+        this.bookList = gender === 'boy'? this.boyBookList: this.girlBookList;
+      }
     },
     components: {
       BookList

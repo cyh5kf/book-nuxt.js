@@ -25,7 +25,7 @@
 <style lang="scss" scoped>
   .header_nav {
     width: 100%;
-    border: 2px solid #EFEFEF;
+    border-bottom: 2px solid #EFEFEF;
     padding: 0.28rem 0.3rem 0.26rem 0.34rem;
     overflow: hidden;
 

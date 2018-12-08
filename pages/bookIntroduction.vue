@@ -22,7 +22,10 @@
         </div>
 
         <div class="btn_area">
-          <div class="begin_read">开始阅读</div>
+          <nuxt-link to="/novelText">
+            <div class="begin_read">开始阅读</div>
+          </nuxt-link>
+          
           <div class="join_bookcase">加入书架</div>
         </div>
 

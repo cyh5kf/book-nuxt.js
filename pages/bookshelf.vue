@@ -185,7 +185,7 @@
   .header_nav {
     width: 100%;
     height: 1.3rem;
-    border: 2px solid #EFEFEF;
+    border-bottom: 2px solid #EFEFEF;
     padding: 0.2rem 0 0.24rem;
     overflow: hidden;
     position: relative;
