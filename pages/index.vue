@@ -100,8 +100,12 @@
   import Swiper from 'swiper';
   import 'swiper/dist/css/swiper.min.css';
   import BookList from '~/components/BookList';
+  import uuid from 'uuid'
+  import axios from 'axios'
+  import api from '../api/axios'
 
   export default {
+    // middleware: 'check-auth',
     data() {
       return {
         gender: 'boy', // 性别
@@ -168,7 +172,49 @@
         ],
       }
     },
-    mounted () {
+    async asyncData ({ app }) {
+      const deviceId = uuid.v4();
+      console.log('deviceId:' + deviceId);
+      const query = {
+        id: "1",
+        jsonrpc: "2.0",
+        method: "activate",
+        params: [
+          {
+              clientInfo: {
+                  lang: "zh-CN",
+                  osVersion: "12",
+                  clientVersion: "c",
+                  deviceId: deviceId,
+                  manufactory: "m",
+                  machineMode: "mode",
+                  deviceType: 2
+              },
+              identity: {
+                  "appName": "yyzshz"
+              }
+          }
+      ]
+    }
+
+    // const res = await api.post('/no-auth/user-rpc', query);
+    // console.log(res)
+    app.$axios({
+          url: '/api/no-auth/user-rpc',
+          method: 'post',
+          data: query,
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      }).then(res=> {
+        console.log(res)
+      }).catch((error) => {//错误业务逻辑
+          console.log(error)
+      });
+
+    },
+    async mounted () {
+
       var swiper = new Swiper('.swiper-container', {
         pagination: {
           el: '.swiper-pagination',

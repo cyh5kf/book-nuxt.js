@@ -27,6 +27,10 @@ module.exports = {
   */
   loading: { color: '#fff' },
 
+  // router: {
+  //   middleware: 'check-auth'
+  // },
+
   /*
   ** Global CSS
   */
@@ -38,7 +42,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '@/plugins/cube-ui', ssr: false }
+    { src: '@/plugins/cube-ui', ssr: false },
   ],
 
   /*
@@ -58,8 +62,10 @@ module.exports = {
 
   proxy:{
     '/api/': { 
-      target: 'http://api.example.com',
-      pathRewrite: {'^/api/': ''} 
+      target: 'https://47.110.179.84',
+      pathRewrite: {'^/api/': ''},
+      secure: false,
+      changeOrigin: true
     }
   },
 

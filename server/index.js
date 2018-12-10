@@ -2,9 +2,14 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const json = require('koa-json')
+const logger = require('koa-logger')
+const convert = require('koa-convert')
+const bodyParser = require('koa-bodyparser')
+const api = require('./router')
 
 const app = new Koa()
-const host = process.env.HOST || '127.0.0.1'
+const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
 // Import and Set Nuxt.js options
@@ -20,6 +25,18 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  // 记录所用方式与时间
+  app.use(convert(logger()))
+
+  // 传输JSON
+  // app.use(convert(json()))
+
+  // body解析
+  // app.use(bodyParser())
+
+  //api路由
+  // app.use(api.routes());
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
