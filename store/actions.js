@@ -7,12 +7,6 @@
 // }
 
 const actions = {
-    showLoading({commit},state){
-        commit('SHOW_LOADING',state)
-    },
-    showMsg({commit},state){
-        commit('SHOW_MSG',state)
-    },
     setInfo({commit},state){
         commit('SET_INFO',state)
     },

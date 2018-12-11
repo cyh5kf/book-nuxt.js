@@ -1,5 +1,5 @@
 // import jwtDecode from 'jwt-decode'
-// import Cookie from 'js-cookie'
+import Cookie from 'js-cookie'
 
 // const getQueryParams = () => {
 //   const params = {}
@@ -18,31 +18,31 @@
 //   }
 // }
 
-// export const setToken = (token) => {
-//   if (process.SERVER_BUILD) return
+// 设置cookie
+export const setToken = (userInfo) => {
+  if (process.SERVER_BUILD) return
 //   window.localStorage.setItem('token', token)
-//   // window.localStorage.setItem('user', JSON.stringify(jwtDecode(token)))
+  // window.localStorage.setItem('user', JSON.stringify(jwtDecode(token)))
 //   window.localStorage.setItem('user', JSON.stringify(token))
-//   Cookie.set('jwt', token)
-// }
+  Cookie.set('userInfo', userInfo)
+}
 
-// export const unsetToken = () => {
-//   if (process.SERVER_BUILD) return
+export const unsetToken = () => {
+  if (process.SERVER_BUILD) return
 //   window.localStorage.removeItem('token')
 //   window.localStorage.removeItem('user')
 //   window.localStorage.removeItem('secret')
-//   Cookie.remove('jwt')
+  Cookie.remove('userInfo')
 //   window.localStorage.setItem('logout', Date.now())
-// }
+}
 
-// export const getUserFromCookie = (req) => {
-//   if (!req.headers.cookie) return
-//   const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='))
-//   if (!jwtCookie) return
-//   const jwt = jwtCookie.split('=')[1]
-//   // return jwtDecode(jwt)
-//   return jwt
-// }
+export const getUserFromCookie = (req) => {
+  if (!req.headers.cookie) return
+  const userCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('userInfo='))
+  if (!userCookie) return
+  const userInfo = userCookie.split('=')[1]
+  return userInfo
+}
 
 // export const getUserFromLocalStorage = () => {
 //   const json = window.localStorage.user

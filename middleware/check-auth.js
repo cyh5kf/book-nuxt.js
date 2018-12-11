@@ -1,21 +1,19 @@
-// import { getUserFromCookie, getUserFromLocalStorage } from '~/utils/auth'
-
-// export default function ({ isServer, store, req }) {
-//    // If nuxt generate, pass this middleware
-//   if (isServer && !req) return
-//   // const loggedUser = isServer ? getUserFromCookie(req) : getUserFromLocalStorage()
-//   // store.commit('SET_USER', loggedUser)
-// }
+import { getUserFromCookie, setToken } from '~/utils/auth'
 import uuid from 'uuid'
-import api from '../api/axios'
+import api from '@/plugins/axios'
 
 export default async ({ isServer, store, req }) => {
-  const deviceId = uuid.v4();
-  console.log('deviceId:' + deviceId);
-  const query = {
-    method: "activate",
-    params: [
-      {
+   // If nuxt generate, pass this middleware
+  if (isServer && !req) return
+  const userInfo = getUserFromCookie(req);
+  console.log(userInfo)
+  console.log(store.state);
+  if(!userInfo) { //没有cookie，设置cookie，并存到store中
+    const deviceId = uuid.v4();
+    const query = {
+      method: "activate",
+      params: [
+        {
           clientInfo: {
               lang: "zh-CN",
               osVersion: "12",
@@ -28,11 +26,14 @@ export default async ({ isServer, store, req }) => {
           identity: {
               "appName": "yyzshz"
           }
-      }
-  ]
-}
-
-  const res = await api.post('/no-auth/user-rpc', query);
-  console.log('res:' + res)
-  return
+        }
+      ]
+    }
+  
+    const res = await api.post('/no-auth/user-rpc', query);
+    console.log(res)
+    store.dispatch('setInfo', userInfo)
+    setToken(res.result)
+  }
+  
 }

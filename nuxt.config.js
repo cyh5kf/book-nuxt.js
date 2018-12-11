@@ -27,9 +27,9 @@ module.exports = {
   */
   loading: { color: '#fff' },
 
-  // router: {
-  //   middleware: 'check-auth'
-  // },
+  router: {
+    middleware: 'check-auth'
+  },
 
   /*
   ** Global CSS

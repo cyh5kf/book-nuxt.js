@@ -100,12 +100,8 @@
   import Swiper from 'swiper';
   import 'swiper/dist/css/swiper.min.css';
   import BookList from '~/components/BookList';
-  import uuid from 'uuid'
-  import axios from 'axios'
-  import api from '../api/axios'
 
   export default {
-    // middleware: 'check-auth',
     data() {
       return {
         gender: 'boy', // 性别
