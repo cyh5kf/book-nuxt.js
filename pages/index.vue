@@ -173,45 +173,33 @@
       }
     },
     async asyncData ({ app }) {
-      const deviceId = uuid.v4();
-      console.log('deviceId:' + deviceId);
-      const query = {
-        id: "1",
-        jsonrpc: "2.0",
-        method: "activate",
-        params: [
-          {
-              clientInfo: {
-                  lang: "zh-CN",
-                  osVersion: "12",
-                  clientVersion: "c",
-                  deviceId: deviceId,
-                  manufactory: "m",
-                  machineMode: "mode",
-                  deviceType: 2
-              },
-              identity: {
-                  "appName": "yyzshz"
-              }
-          }
-      ]
-    }
 
-    // const res = await api.post('/no-auth/user-rpc', query);
-    // console.log(res)
-    app.$axios({
-          url: '/api/no-auth/user-rpc',
-          method: 'post',
-          data: query,
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      }).then(res=> {
-        console.log(res)
-      }).catch((error) => {//错误业务逻辑
-          console.log(error)
-      });
+      // const deviceId = uuid.v4();
+      // console.log('deviceId:' + deviceId);
+      // const query = {
+      //     // id: "1",
+      //     // jsonrpc: "2.0",
+      //     method: "activate",
+      //     params: [
+      //       {
+      //           clientInfo: {
+      //               lang: "zh-CN",
+      //               osVersion: "12",
+      //               clientVersion: "c",
+      //               deviceId: deviceId,
+      //               manufactory: "m",
+      //               machineMode: "mode",
+      //               deviceType: 2
+      //           },
+      //           identity: {
+      //               "appName": "yyzshz"
+      //           }
+      //       }
+      //   ]
+      // }
 
+      // const res = await api.post('/no-auth/user-rpc', query);
+      // console.log(res)
     },
     async mounted () {
 

@@ -1,13 +1,15 @@
 import axios from 'axios'
 
+// axios 配置
+axios.defaults.timeout = 10000
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+axios.defaults.baseURL = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}/api`
+
 const initParam = {
     token: '',
     id: "1",
     jsonrpc: "2.0"
 }
-
-// url前缀
-const prefix = '/api'
 
 // request
 axios.interceptors.request.use(
@@ -33,12 +35,9 @@ axios.interceptors.response.use((response) => {
 function http(url, params, all, type) {
     return new Promise((resolve, reject) => {
         return axios({
-            url: prefix + url,
+            url: url,
             method: type,
-            data: params,
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            data: params
         }).then((response) => {
             resolve(response.data)
             // if (all) {
