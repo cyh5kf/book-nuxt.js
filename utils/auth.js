@@ -18,13 +18,13 @@ import Cookie from 'js-cookie'
 //   }
 // }
 
-// 设置cookie
-export const setToken = (userInfo) => {
+// 客户端设置cookie
+export const setToken = (token) => {
   if (process.SERVER_BUILD) return
 //   window.localStorage.setItem('token', token)
   // window.localStorage.setItem('user', JSON.stringify(jwtDecode(token)))
 //   window.localStorage.setItem('user', JSON.stringify(token))
-  Cookie.set('userInfo', userInfo)
+  Cookie.set('token', token)
 }
 
 export const unsetToken = () => {
@@ -32,16 +32,16 @@ export const unsetToken = () => {
 //   window.localStorage.removeItem('token')
 //   window.localStorage.removeItem('user')
 //   window.localStorage.removeItem('secret')
-  Cookie.remove('userInfo')
+  Cookie.remove('token')
 //   window.localStorage.setItem('logout', Date.now())
 }
 
 export const getUserFromCookie = (req) => {
   if (!req.headers.cookie) return
-  const userCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('userInfo='))
-  if (!userCookie) return
-  const userInfo = userCookie.split('=')[1]
-  return userInfo
+  const tokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('token='))
+  if (!tokenCookie) return
+  const token = tokenCookie.split('=')[1]
+  return token
 }
 
 // export const getUserFromLocalStorage = () => {

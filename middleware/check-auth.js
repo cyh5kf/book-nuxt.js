@@ -1,14 +1,12 @@
-import { getUserFromCookie, setToken } from '~/utils/auth'
+import { getUserFromCookie } from '~/utils/auth'
 import uuid from 'uuid'
 import api from '@/plugins/axios'
 
 export default async ({ isServer, store, req }) => {
    // If nuxt generate, pass this middleware
   if (isServer && !req) return
-  const userInfo = getUserFromCookie(req);
-  console.log(userInfo)
-  console.log(store.state);
-  if(!userInfo) { //没有cookie，设置cookie，并存到store中
+  const token = getUserFromCookie(req);
+  if(!token) { //没有cookie，设置cookie，并存到store中
     const deviceId = uuid.v4();
     const query = {
       method: "activate",
@@ -32,8 +30,7 @@ export default async ({ isServer, store, req }) => {
   
     const res = await api.post('/no-auth/user-rpc', query);
     console.log(res)
-    store.dispatch('setInfo', userInfo)
-    setToken(res.result)
+    store.dispatch('setInfo', res.result)
   }
   
 }

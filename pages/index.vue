@@ -100,6 +100,8 @@
   import Swiper from 'swiper';
   import 'swiper/dist/css/swiper.min.css';
   import BookList from '~/components/BookList';
+  import {mapGetters,mapActions} from 'vuex'
+  import { setToken } from '~/utils/auth'
 
   export default {
     data() {
@@ -168,8 +170,12 @@
         ],
       }
     },
+    computed: {
+        ...mapGetters([
+            'userInfo'
+        ])
+    },
     async asyncData ({ app }) {
-
       // const deviceId = uuid.v4();
       // console.log('deviceId:' + deviceId);
       // const query = {
@@ -198,7 +204,11 @@
       // console.log(res)
     },
     async mounted () {
-
+      // 客户端设置cookie
+      if(this.userInfo) {
+        setToken(this.userInfo.token)
+      }
+      
       var swiper = new Swiper('.swiper-container', {
         pagination: {
           el: '.swiper-pagination',

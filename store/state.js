@@ -1,5 +1,5 @@
 const state = {
-    userInfo: null,
+    userInfo: {},
 }
 export default state
   

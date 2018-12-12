@@ -1,15 +1,13 @@
 import axios from 'axios'
-import store from '@/store/index.js';
+import state from '@/store/state';
 
 // axios 配置
 axios.defaults.timeout = 10000
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.baseURL = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}/api`
 
-// console.log(store.state);
-
 const initParam = {
-    // token: store.state.userInfo? store.state.userInfo.token: '',
+    token: state.userInfo? state.userInfo.token: '',
     id: "1",
     jsonrpc: "2.0"
 }
